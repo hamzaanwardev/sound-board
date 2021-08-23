@@ -1,7 +1,18 @@
-const sounds = ["mexico", "pain", "das-ki-karan", "dhoor-pendi", "guilty"]
+const sounds = ["mexico", "pain", "das-ki-karan", "dhoor-pendi", "guilty"];
 sounds.forEach(sound => {
     const btn = document.createElement("button")
     btn.classList.add("btn")
     btn.innerText = sound
-    document.getElementById("buttons")
+    btn.addEventListener("click", () => {
+        stopSongs()
+        document.getElementById(sound).play()
+    })
+    document.getElementById("buttons").appendChild(btn)
 })
+function stopSongs () {
+    sounds.forEach(sound => {
+        const song = document.getElementById(sound)
+
+        song.pause()
+    })
+}
